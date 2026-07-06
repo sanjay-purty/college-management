@@ -1,0 +1,146 @@
+ *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    padding:40px 15px;
+    background:linear-gradient(135deg,#f0f9ff,#dbeafe,#eff6ff);
+}
+
+.container{
+    max-width:950px;
+    margin:auto;
+    background:#ffffff;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 15px 35px rgba(0,0,0,0.12);
+}
+
+/* Header */
+h1{
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:white;
+    text-align:center;
+    padding:30px;
+    font-size:34px;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+/* Form Area */
+form{
+    padding:35px;
+}
+
+.form-group{
+    margin-bottom:25px;
+}
+
+label{
+    display:block;
+    margin-bottom:10px;
+    color:#1e293b;
+    font-size:15px;
+    font-weight:600;
+}
+
+small{
+    color:#64748b;
+    font-weight:400;
+}
+
+.row{
+    display:flex;
+    gap:18px;
+}
+
+.row input,
+.row select{
+    flex:1;
+}
+
+input,
+select{
+    width:100%;
+    padding:15px;
+    border:1px solid #cbd5e1;
+    border-radius:10px;
+    background:#f8fafc;
+    font-size:15px;
+    transition:.3s;
+}
+
+input:hover,
+select:hover{
+    border-color:#2563eb;
+}
+
+input:focus,
+select:focus{
+    outline:none;
+    background:white;
+    border-color:#2563eb;
+    box-shadow:0 0 0 4px rgba(37,99,235,0.12);
+}
+
+.mt{
+    margin-top:15px;
+}
+
+/* Submit Button */
+.submit{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:12px;
+    background:#2563eb;
+    color:white;
+    font-size:18px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.submit:hover{
+    background:#1d4ed8;
+    transform:translateY(-2px);
+}
+
+.submit:active{
+    transform:scale(0.98);
+}
+
+/* Placeholder */
+::placeholder{
+    color:#94a3b8;
+}
+
+.subtitle{
+    text-align:center;
+    color:#64748b;
+    padding:15px;
+    background:#eff6ff;
+    border-bottom:1px solid #dbeafe;
+}
+
+/* Mobile */
+@media(max-width:768px){
+
+    h1{
+        font-size:28px;
+        padding:25px;
+    }
+
+    form{
+        padding:20px;
+    }
+
+    .row{
+        flex-direction:column;
+        gap:12px;
+    }
+}
