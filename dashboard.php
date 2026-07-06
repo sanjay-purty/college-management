@@ -95,11 +95,11 @@ if(!isset($_SESSION['username']))
                     <input type="text" placeholder="Search...">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
-
+<!-- 
                 <div class="top-right">
                     <button class="add-btn"  onclick="window.location.href='students-add.php'">Add Students</button>
                     
-                </div>
+                </div> -->
 
                  <div class="top-right">
                     <button class="add-btn"  onclick="window.location.href='add_teachers.php'">Add Teacher</button>
