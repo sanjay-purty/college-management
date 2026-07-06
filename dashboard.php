@@ -34,52 +34,63 @@ if(!isset($_SESSION['username']))
 
 <body>
 
+    <button class="menu-toggle" id="menuToggle">
+    <i class="fa-solid fa-bars"></i>
+    </button>
+
     <div class="container">
 
         <!-- Sidebar -->
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebar">
             <h1 class="logo">Brand</h1>
 
             <ul>
                     <li class="active">
                         <a href="dashboard.php">
-                            <i class="fa-solid fa-table-columns"></i> Dashboard
+                            <i class="fa-solid fa-table-columns"></i> 
+                            <span>Dashboard</span>
                         </a>
                     </li>
 
                     <li>
                         <a href="student-de.php">
-                            <i class="fa-solid fa-user-graduate"></i> Students
+                            <i class="fa-solid fa-user-graduate"></i> 
+                            <span>Students</span>
                         </a>
                     </li>
 
                     <li>
                         <a href="teacher-dash.php">
-                            <i class="fa-solid fa-chalkboard-user"></i> Teachers
+                            <i class="fa-solid fa-chalkboard-user"></i> 
+                            <span>Teachers</span>
                         </a>
                     </li>
 
                     <li>
                         <a href="school.php">
-                            <i class="fa-solid fa-school"></i> Schools
+                            <i class="fa-solid fa-school"></i> 
+                            <span>Schools</span>
                         </a>
                     </li>
 
                     <li>
                         <a href="income.php">
-                            <i class="fa-solid fa-money-bill"></i> Income
+                            <i class="fa-solid fa-money-bill"></i> 
+                            <span>Income</span>
                         </a>
                     </li>
 
                     <li>
                         <a href="help.php">
-                            <i class="fa-solid fa-circle-question"></i> Help
+                            <i class="fa-solid fa-circle-question"></i> 
+                            <span>Help</span>
                         </a>
                     </li>
 
                     <li>
                         <a href="logout.php">
-                            <i class="fa-solid fa-gear"></i> Logout
+                            <i class="fa-solid fa-gear"></i> 
+                            <span>Logout</span>
                         </a>
                     </li>
             </ul>
@@ -202,7 +213,7 @@ if(!isset($_SESSION['username']))
                 </div>
 
                 <!-- New Students -->
-                <div class="students">
+                <!-- <div class="students">
 
                     <div class="section-header">
                         <h3>New Students</h3>
@@ -215,7 +226,7 @@ if(!isset($_SESSION['username']))
                         <i class="fa-regular fa-id-badge"></i>
                     </div>
 
-                </div>
+                </div> -->
 
                  <!-- Teachers Details -->
                 <div class="payments">
@@ -275,6 +286,15 @@ if(!isset($_SESSION['username']))
         </main>
 
     </div>
+
+    <script>
+const menuToggle = document.getElementById("menuToggle");
+const sidebar = document.getElementById("sidebar");
+
+menuToggle.addEventListener("click", function () {
+    sidebar.classList.toggle("show");
+});
+</script>
 
 </body>
 
