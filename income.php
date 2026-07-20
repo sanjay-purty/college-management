@@ -27,6 +27,21 @@ $total_admission_fees = $total_admission_fees_row['total_admission_fees'];
 
 $total = $total_income + $total_admission_fees;
 
+//percentage-calculation:-
+
+if ($total > 0) 
+        {
+            $total_percentage = ($total_income / $total) * 100 + ($total_admission_fees / $total) * 100;
+            $tuition_percentage = ($total_income / $total) * 100;
+            $admission_percentage = ($total_admission_fees / $total) * 100;
+        } 
+else 
+    {
+
+        $tuition_percentage = 0;
+         $admission_percentage = 0;
+    }
+
 
  
 ?>
@@ -38,183 +53,546 @@ $total = $total_income + $total_admission_fees;
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Income Dashboard</title>
+<link rel="stylesheet" href="admin.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
  <style>
-                *{
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+
+        *{
             margin:0;
             padding:0;
             box-sizing:border-box;
-            font-family:Arial, Helvetica, sans-serif;
+            font-family:'Poppins',sans-serif;
         }
+
 
         body{
-            background:#f4f7fb;
+
+            background:#f1f5f9;
+
         }
+
+
+
+        /* MAIN DASHBOARD */
 
         .dashboard{
-            width:95%;
-            margin:30px auto;
+
+            margin-left:260px;
+            padding:25px;
+
         }
+
+
+
+        /* HEADER */
 
         header{
-            margin-bottom:30px;
+
+            background:white;
+
+            padding:20px 25px;
+
+            border-radius:18px;
+
+            margin-bottom:25px;
+
+            box-shadow:0 6px 18px rgba(0,0,0,.08);
+
+            border-left:6px solid #2563eb;
+
         }
+
 
         header h1{
-            color:#1e3a8a;
+
+            color:#0b4a8b;
+
+            font-size:30px;
+
+            font-weight:700;
+
         }
+
 
         header p{
-            color:#777;
+
+            color:#64748b;
+
             margin-top:5px;
+
         }
 
-        /* Cards */
+
+
+
+
+
+        /* SUMMARY CARDS */
+
 
         .cards{
+
             display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+
+            grid-template-columns:repeat(4,1fr);
+
             gap:20px;
+
         }
+
+
 
         .card{
-            background:#fff;
-            padding:20px;
-            border-radius:12px;
-            box-shadow:0 4px 10px rgba(0,0,0,.08);
+
+            background:white;
+
+            padding:35px;
+
+            border-radius:20px;
+
+            box-shadow:0 6px 18px rgba(0,0,0,.08);
+
+            border-top:5px solid #2563eb;
+
             transition:.3s;
+
         }
+
+
 
         .card:hover{
+
             transform:translateY(-5px);
+
         }
+
+
 
         .card h3{
-            color:#666;
-            margin-bottom:15px;
+
+            color:#64748b;
+
+            font-size:15px;    
+
+            margin-bottom:10px;
+
         }
+
+
 
         .card h2{
-            color:#1e3a8a;
-            margin-bottom:10px;
+
+            color:#0f172a;
+
+            font-size:28px;
+
+            margin-top:10px;
+
         }
+
+
 
         .card span{
-            color:green;
-            font-size:14px;
+
+            color:#16a34a;
+
+            font-size:13px;
+
+            font-weight:600;
+
+            margin-bottom:5px;
+
         }
 
-        /* Charts */
+
+
+
+
+
+
+        /* CHART SECTION */
+
 
         .chart-section{
+
             display:grid;
+
             grid-template-columns:2fr 1fr;
+
             gap:20px;
-            margin-top:30px;
+
+            margin-top:25px;
+
         }
+
+
+
 
         .chart-box{
-            background:#fff;
-            padding:50px;
-            border-radius:12px;
-            box-shadow:0 4px 10px rgba(0,0,0,.08);
+
+            background:white;
+
+            padding:25px;
+
+            border-radius:18px;
+
+            box-shadow:0 6px 18px rgba(0,0,0,.08);
+
+            border-top:5px solid #2563eb;
+
         }
+
+
+
+        .chart-box h3{
+
+            color:#0b5ed7;
+
+            margin-bottom:20px;
+
+            font-size:20px;
+
+        }
+
+
+
+
+
+
+
+        /* BAR CHART */
+
 
         .chart-placeholder{
-            height:300px;
+
+            height:260px;
+
             display:flex;
+
             align-items:flex-end;
+
             justify-content:space-around;
-            margin-top:20px;
+
+            gap:15px;
+
         }
+
+
 
         .bar{
+
             width:45px;
-            background:linear-gradient(to top,#2563eb,#60a5fa);
+
+            background:linear-gradient(#3b82f6,#2563eb);
+
             border-radius:8px 8px 0 0;
+
+            transition:.3s;
+
         }
 
-        /* Income List */
+
+
+        .bar:hover{
+
+            opacity:.8;
+
+        }
+
+
+
+
+
+
+
+
+        /* INCOME LIST */
+
 
         .income-list{
+
             list-style:none;
-            margin-top:20px;
+
         }
+
+
 
         .income-list li{
+
             display:flex;
+
             justify-content:space-between;
-            padding:12px 0;
-            border-bottom:1px solid #eee;
+
+            padding:14px 0;
+
+            border-bottom:1px solid #e5e7eb;
+
         }
 
-        /* Table */
+
+
+        .income-list li span{
+
+            color:#475569;
+
+        }
+
+
+
+        .income-list strong{
+
+            color:#0b5ed7;
+
+        }
+
+
+
+
+
+
+
+
+        /* TABLE SECTION */
+
 
         .table-section{
-            margin-top:30px;
-            background:#fff;
-            padding:20px;
-            border-radius:12px;
-            box-shadow:0 4px 10px rgba(0,0,0,.08);
+
+            background:white;
+
+            margin-top:25px;
+
+            padding:25px;
+
+            border-radius:18px;
+
+            box-shadow:0 6px 18px rgba(0,0,0,.08);
+
+            border-top:5px solid #2563eb;
+
         }
+
+
 
         .table-section h3{
+
+            color:#0b5ed7;
+
             margin-bottom:20px;
+
         }
+
+
+
+
+
 
         table{
+
             width:100%;
+
             border-collapse:collapse;
+
         }
 
-        th{
-            background:#2563eb;
+
+
+        table th{
+
+            background:#0b5ed7;
+
             color:white;
-            padding:15px;
+
+            padding:14px;
+
+            text-align:left;
+
+            font-size:14px;
+
         }
 
-        td{
-            text-align:center;
-            padding:15px;
-            border-bottom:1px solid #ddd;
+
+
+        table td{
+
+            padding:14px;
+
+            border-bottom:1px solid #e5e7eb;
+
+            color:#334155;
+
+            font-size:14px;
+
         }
 
-        tr:hover{
-            background:#f5f8ff;
+
+
+        table tr:nth-child(even){
+
+            background:#f8fafc;
+
         }
+
+
+
+        table tr:hover{
+
+            background:#eef6ff;
+
+        }
+
+
+
+
+
+
+
+        /* STATUS */
+
 
         .paid{
+
             background:#16a34a;
+
             color:white;
-            padding:6px 12px;
+
+            padding:6px 14px;
+
             border-radius:20px;
-            font-size:13px;
+
+            font-size:12px;
+
+            font-weight:600;
+
         }
+
+
 
         .pending{
+
             background:#f59e0b;
+
             color:white;
-            padding:6px 12px;
+
+            padding:6px 14px;
+
             border-radius:20px;
-            font-size:13px;
+
+            font-size:12px;
+
+            font-weight:600;
+
         }
 
-        /* Responsive */
 
-        @media(max-width:900px){
+
+
+
+
+
+
+        /* RESPONSIVE */
+
+
+        @media(max-width:1100px){
+
+
+        .cards{
+
+            grid-template-columns:repeat(2,1fr);
+
+        }
+
 
         .chart-section{
+
             grid-template-columns:1fr;
+
         }
 
-        table{
-            display:block;
-            overflow-x:auto;
+
         }
+
+
+
+
+        @media(max-width:768px){
+
+
+        .dashboard{
+
+            margin-left:0;
+
+            padding:15px;
+
+        }
+
+
+
+        .cards{
+
+            grid-template-columns:1fr;
+
+        }
+
+
+
+        header h1{
+
+            font-size:24px;
+
+        }
+
+
+
+        .chart-placeholder{
+
+            height:200px;
+
+        }
+
+
+
+        table{
+
+            display:block;
+
+            overflow-x:auto;
+
+            white-space:nowrap;
+
+        }
+
+
+        }
+
+
+
+        @media(max-width:450px){
+
+
+        .card h2{
+
+            font-size:22px;
+
+        }
+
+
+        .bar{
+
+            width:30px;
+
+        }
+
 
         }
  </style>
 </head>
+
 <body>
+
+<?php include 'sidebar.php'; ?>
 
 <div class="dashboard">
 
@@ -229,19 +607,19 @@ $total = $total_income + $total_admission_fees;
         <div class="card">
             <h3>Total Income</h3>
             <h2>₹<?php echo number_format($total); ?></h2>
-            <span>+15% This Month</span>
+            <!-- <span><?php echo round($total_percentage, 2); ?>% This Month</span> -->
         </div>
 
         <div class="card">
             <h3>Tuition Fees</h3>
             <h2>₹<?php echo number_format($total_income); ?></h2>
-            <span>70% of Total</span>
+            <!-- <span><?php echo round($tuition_percentage, 2); ?>% of Total</span> -->
         </div>
 
         <div class="card">
             <h3>Admission Fees</h3>
             <h2>₹<?php echo number_format($total_admission_fees); ?></h2>
-            <span>15% of Total</span>
+            <!-- <span><?php echo round($admission_percentage, 2); ?>% of Total</span> -->
         </div>
 
         <div class="card">

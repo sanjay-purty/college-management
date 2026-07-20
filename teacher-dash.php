@@ -1,383 +1,1172 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Teacher Dashboard</title>
+<link rel="stylesheet" href="admin.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<style>
+ <style>
+            /* ===============================
+                    TEACHER DASHBOARD CSS
+            ================================ */
 
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:Arial, Helvetica, sans-serif;
-        }
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-        body{
-            background:#eef2f7;
-        }
 
-        .container{
-            width:95%;
-            margin:30px auto;
-        }
+            *{
+                margin:0;
+                padding:0;
+                box-sizing:border-box;
+                font-family:'Poppins',sans-serif;
+            }
 
-        h1{
-            text-align:center;
-            color:#1e3a8a;
-            margin-bottom:30px;
-        }
 
-        .dashboard{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
-            gap:25px;
-        }
+            body{
 
-        .card{
-            background:#fff;
-            border-radius:12px;
-            box-shadow:0 5px 15px rgba(0,0,0,.1);
-            padding:20px;
-        }
+                background:#f5f6fa;
+                color:#334155;
 
-        .card h2{
-            color:#2563eb;
-            margin-bottom:18px;
-            border-bottom:2px solid #eee;
-            padding-bottom:10px;
-        }
+            }
 
-        ul{
-            list-style:none;
-        }
 
-        ul li{
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            padding:12px 0;
-            border-bottom:1px solid #eee;
-        }
 
-        ul li:last-child{
-            border:none;
-        }
+            /* ===============================
+                    MAIN AREA
+            ================================ */
 
-        .btn{
-            padding:8px 16px;
-            border:none;
-            background:#2563eb;
-            color:#fff;
-            border-radius:6px;
-            cursor:pointer;
-        }
 
-        .btn:hover{
-            background:#1d4ed8;
-        }
+            .teacher-main{
 
-        .status{
-            padding:5px 12px;
-            border-radius:20px;
-            color:white;
-            font-size:13px;
-        }
+                margin-left:270px;
+                padding:35px;
 
-        .present{
-            background:#16a34a;
-        }
+            }
 
-        .leave{
-            background:#f59e0b;
-        }
 
-        .salary{
-            color:#16a34a;
-            font-weight:bold;
-        }
 
-        table{
-            width:100%;
-            border-collapse:collapse;
-            margin-top:15px;
-        }
+            /* ===============================
+                    TOP HEADER
+            ================================ */
 
-        table th{
-            background:#2563eb;
-            color:white;
-            padding:10px;
-        }
 
-        table td{
-            text-align:center;
-            padding:10px;
-            border-bottom:1px solid #ddd;
-        }
+            .top-header{
 
-        table tr:hover{
-            background:#f8f9ff;
-        }
+                background:#0d478a;
 
-        @media(max-width:768px){
+                color:white;
 
-        table{
-        display:block;
-        overflow-x:auto;
-        }
+                padding:35px 40px;
 
-        }
+                border-radius:0 0 20px 20px;
 
-</style>
+                display:flex;
+
+                justify-content:space-between;
+
+                align-items:center;
+
+                margin-bottom:35px;
+
+                box-shadow:0 6px 20px rgba(0,0,0,.12);
+
+            }
+
+
+
+            .top-header h1{
+
+                font-size:36px;
+
+                color:white;
+
+            }
+
+
+
+            .top-header p{
+
+                color:#dbeafe;
+
+                margin-top:5px;
+
+            }
+
+
+
+            /* PROFILE */
+
+
+            .profile{
+
+                display:flex;
+
+                align-items:center;
+
+                gap:15px;
+
+            }
+
+
+
+            .profile img{
+
+                width:65px;
+
+                height:65px;
+
+                border-radius:50%;
+
+                border:3px solid white;
+
+            }
+
+
+
+            .profile h4{
+
+                color:white;
+
+                font-size:18px;
+
+            }
+
+
+            .profile span{
+
+                font-size:13px;
+
+                color:#dbeafe;
+
+            }
+
+
+
+
+
+            /* ===============================
+                    STAT CARDS
+            ================================ */
+
+
+            .stats{
+
+                display:grid;
+
+                grid-template-columns:repeat(4,1fr);
+
+                gap:25px;
+
+                margin-bottom:35px;
+
+            }
+
+
+
+            .stat-card{
+
+                background:white;
+
+                padding:25px;
+
+                border-radius:20px;
+
+                display:flex;
+
+                align-items:center;
+
+                gap:20px;
+
+                box-shadow:0 6px 20px rgba(0,0,0,.08);
+
+                transition:.3s;
+
+            }
+
+
+
+            .stat-card:hover{
+
+                transform:translateY(-5px);
+
+            }
+
+
+
+            .stat-card i{
+
+                width:65px;
+
+                height:65px;
+
+                border-radius:15px;
+
+                background:#dbeafe;
+
+                color:#0d478a;
+
+                display:flex;
+
+                justify-content:center;
+
+                align-items:center;
+
+                font-size:30px;
+
+            }
+
+
+
+            .stat-card h2{
+
+                font-size:28px;
+
+                color:#0d478a;
+
+            }
+
+
+
+            .stat-card p{
+
+                color:#64748b;
+
+            }
+
+
+
+
+
+            /* ===============================
+                    GRID BOX
+            ================================ */
+
+
+            .dashboard-grid{
+
+                display:grid;
+
+                grid-template-columns:repeat(2,1fr);
+
+                gap:25px;
+
+            }
+
+
+
+            .box{
+
+                background:white;
+
+                padding:30px;
+
+                border-radius:20px;
+
+                box-shadow:0 6px 20px rgba(0,0,0,.08);
+
+            }
+
+
+
+            .box-title{
+
+                margin-bottom:20px;
+
+            }
+
+
+
+            .box-title h2{
+
+                font-size:24px;
+
+                color:#0d478a;
+
+            }
+
+
+
+            .box-title i{
+
+                color:#0d478a;
+
+                margin-right:10px;
+
+            }
+
+
+
+
+
+            /* ===============================
+                    TABLE
+            ================================ */
+
+
+            table{
+
+                width:100%;
+
+                border-collapse:collapse;
+
+            }
+
+
+
+            table th{
+
+                background:#0d478a;
+
+                color:white;
+
+                padding:16px;
+
+                text-align:left;
+
+            }
+
+
+
+            table td{
+
+                padding:15px;
+
+                border-bottom:1px solid #ddd;
+
+            }
+
+
+
+            table tr:hover{
+
+                background:#eef6ff;
+
+            }
+
+
+
+
+
+            /* STATUS */
+
+
+            .active{
+
+                background:#dcfce7;
+
+                color:#15803d;
+
+                padding:6px 12px;
+
+                border-radius:20px;
+
+                font-size:13px;
+
+            }
+
+
+
+            .pending{
+
+                background:#fef3c7;
+
+                color:#b45309;
+
+                padding:6px 12px;
+
+                border-radius:20px;
+
+                font-size:13px;
+
+            }
+
+
+
+
+
+            /* ===============================
+                    BUTTON
+            ================================ */
+
+
+            button{
+
+                border:none;
+
+                background:#28a745;
+
+                color:white;
+
+                padding:12px 25px;
+
+                border-radius:8px;
+
+                cursor:pointer;
+
+                font-weight:600;
+
+                transition:.3s;
+
+            }
+
+
+
+            button:hover{
+
+                background:#218838;
+
+            }
+
+
+
+
+
+            /* ===============================
+                    ATTENDANCE
+            ================================ */
+
+
+            .action-row{
+
+                display:flex;
+
+                justify-content:space-between;
+
+                align-items:center;
+
+                padding:18px 0;
+
+                border-bottom:1px solid #e2e8f0;
+
+            }
+
+
+
+            .action-row h3{
+
+                color:#0d478a;
+
+            }
+
+
+
+            .action-row p{
+
+                color:#64748b;
+
+            }
+
+
+
+
+
+            /* ===============================
+                    LEAVE
+            ================================ */
+
+
+            .leave-item{
+
+                display:flex;
+
+                justify-content:space-between;
+
+                padding:16px 0;
+
+                border-bottom:1px solid #e2e8f0;
+
+            }
+
+
+
+            .yellow{
+
+                color:#f59e0b;
+
+            }
+
+
+
+
+
+            /* ===============================
+                    SUBJECT
+            ================================ */
+
+
+            .subject-list{
+
+                list-style:none;
+
+            }
+
+
+
+            .subject-list li{
+
+                display:flex;
+
+                justify-content:space-between;
+
+                padding:15px;
+
+                background:#f8fafc;
+
+                margin-bottom:10px;
+
+                border-radius:10px;
+
+            }
+
+
+
+            .subject-list span{
+
+                color:#0d478a;
+
+                font-weight:600;
+
+            }
+
+
+
+
+
+            /* ===============================
+                    SALARY
+            ================================ */
+
+
+            .salary{
+
+                text-align:center;
+
+            }
+
+
+
+            .salary h3{
+
+                font-size:38px;
+
+                color:#0d478a;
+
+            }
+
+
+
+            .salary p{
+
+                color:#64748b;
+
+            }
+
+
+
+
+
+            /* ===============================
+                    NOTICE
+            ================================ */
+
+
+            .notice{
+
+                list-style:none;
+
+            }
+
+
+
+            .notice li{
+
+                padding:15px;
+
+                background:#eef6ff;
+
+                margin-bottom:12px;
+
+                border-radius:10px;
+
+                color:#0d478a;
+
+            }
+
+
+
+
+
+            /* ===============================
+                    RESPONSIVE
+            ================================ */
+
+
+            @media(max-width:1200px){
+
+
+            .stats{
+
+                grid-template-columns:repeat(2,1fr);
+
+            }
+
+
+            .dashboard-grid{
+
+                grid-template-columns:1fr;
+
+            }
+
+
+            }
+
+
+
+            @media(max-width:992px){
+
+
+            .teacher-main{
+
+                margin-left:90px;
+
+            }
+
+
+            }
+
+
+
+            @media(max-width:768px){
+
+
+            .teacher-main{
+
+                margin-left:0;
+
+                padding:20px;
+
+            }
+
+
+
+            .top-header{
+
+                flex-direction:column;
+
+                gap:20px;
+
+                text-align:center;
+
+            }
+
+
+
+            .profile{
+
+                flex-direction:column;
+
+            }
+
+
+
+            .stats{
+
+                grid-template-columns:1fr;
+
+            }
+
+
+
+            .dashboard-grid{
+
+                grid-template-columns:1fr;
+
+            }
+
+
+
+            .action-row,
+            .leave-item{
+
+                flex-direction:column;
+
+                align-items:flex-start;
+
+                gap:15px;
+
+            }
+
+
+
+            button{
+
+                width:100%;
+
+            }
+
+
+
+            table{
+
+                display:block;
+
+                overflow-x:auto;
+
+                white-space:nowrap;
+
+            }
+
+
+            }
+ </style>
 
 </head>
 
-    <body>
 
-            <div class="container">
+<body>
 
-            <h1>Teacher Dashboard</h1>
 
-            <div class="dashboard">
+<?php include 'sidebar.php'; ?>
 
-            <!-- Teacher Attendance -->
 
-            <div class="card">
+<div class="teacher-main">
 
-            <h2>Teacher Attendance</h2>
 
-            <ul>
+<!-- Top Header -->
 
-            <li>
-            <span>Today's Attendance</span>
-            <span class="status present">Present</span>
-            </li>
+<div class="top-header">
 
-            <li>
-            <span>Monthly Attendance</span>
-            <span>25 / 30 Days</span>
-            </li>
+<div>
+<h1>Teacher Dashboard</h1>
+<p>Welcome back, Professor 👋</p>
+</div>
 
-            <li>
-            <span>Attendance Report</span>
-            <button class="btn">View</button>
-            </li>
 
-            </ul>
+<div class="profile">
 
-            </div>
+<img src="images/user.png">
 
-            <!-- Student Attendance -->
+<div>
+<h4>Rahul Sharma</h4>
+<span>Computer Science Teacher</span>
+</div>
 
-            <div class="card">
+</div>
 
-            <h2>Student Attendance</h2>
+</div>
 
-            <ul>
 
-            <li>
-            <span>Mark Attendance</span>
-            <button class="btn">Mark</button>
-            </li>
 
-            <li>
-            <span>Edit Attendance</span>
-            <button class="btn">Edit</button>
-            </li>
+<!-- Statistics -->
 
-            <li>
-            <span>Attendance Report</span>
-            <button class="btn">View</button>
-            </li>
 
-            <li>
-            <span>Monthly Attendance</span>
-            <button class="btn">Monthly</button>
-            </li>
+<div class="stats">
 
-            </ul>
 
-            </div>
+<div class="stat-card">
 
-            <!-- Leave Management -->
+<i class="fa-solid fa-book"></i>
 
-            <div class="card">
+<div>
+<h2>06</h2>
+<p>Today's Classes</p>
+</div>
 
-            <h2>Leave Management</h2>
+</div>
 
-            <ul>
 
-            <li>
-            <span>Apply Leave</span>
-            <button class="btn">Apply</button>
-            </li>
 
-            <li>
-            <span>Leave History</span>
-            <button class="btn">History</button>
-            </li>
+<div class="stat-card">
 
-            <li>
-            <span>Leave Status</span>
-            <span class="status leave">Pending</span>
-            </li>
+<i class="fa-solid fa-user-graduate"></i>
 
-            </ul>
+<div>
+<h2>120</h2>
+<p>Total Students</p>
+</div>
 
-            </div>
+</div>
 
-            <!-- Salary Details -->
 
-            <div class="card">
 
-            <h2>Salary Details</h2>
+<div class="stat-card">
 
-            <ul>
+<i class="fa-solid fa-calendar-check"></i>
 
-            <li>
-            <span>Monthly Salary</span>
-            <span class="salary">₹55,000</span>
-            </li>
+<div>
+<h2>95%</h2>
+<p>Attendance</p>
+</div>
 
-            <li>
-            <span>Salary Slip</span>
-            <button class="btn">Download</button>
-            </li>
+</div>
 
-            <li>
-            <span>Bonus</span>
-            <span class="salary">₹5,000</span>
-            </li>
 
-            </ul>
 
-            </div>
+<div class="stat-card">
 
-            <!-- Class Routine -->
+<i class="fa-solid fa-money-bill"></i>
 
-            <div class="card">
+<div>
+<h2>₹55,000</h2>
+<p>Monthly Salary</p>
+</div>
 
-            <h2>Daily Timetable</h2>
+</div>
 
-            <table>
 
-            <tr>
-            <th>Time</th>
-            <th>Class</th>
-            <th>Subject</th>
-            </tr>
+</div>
 
-            <tr>
-            <td>09:00 AM</td>
-            <td>BCA-I</td>
-            <td>Programming</td>
-            </tr>
 
-            <tr>
-            <td>10:00 AM</td>
-            <td>BCA-II</td>
-            <td>DBMS</td>
-            </tr>
 
-            <tr>
-            <td>11:30 AM</td>
-            <td>B.Tech</td>
-            <td>Java</td>
-            </tr>
 
-            <tr>
-            <td>02:00 PM</td>
-            <td>MCA</td>
-            <td>Python</td>
-            </tr>
 
-            </table>
+<!-- Main Grid -->
 
-            </div>
 
-            <!-- Weekly Timetable -->
+<div class="dashboard-grid">
 
-            <div class="card">
 
-            <h2>Weekly Schedule</h2>
 
-            <table>
+<!-- Timetable -->
 
-            <tr>
-            <th>Day</th>
-            <th>Classes</th>
-            </tr>
+<div class="box">
 
-            <tr>
-            <td>Monday</td>
-            <td>4 Classes</td>
-            </tr>
+<div class="box-title">
+<h2>
+<i class="fa-solid fa-clock"></i>
+Today's Timetable
+</h2>
+</div>
 
-            <tr>
-            <td>Tuesday</td>
-            <td>5 Classes</td>
-            </tr>
 
-            <tr>
-            <td>Wednesday</td>
-            <td>4 Classes</td>
-            </tr>
+<table>
 
-            <tr>
-            <td>Thursday</td>
-            <td>5 Classes</td>
-            </tr>
+<tr>
+<th>Time</th>
+<th>Class</th>
+<th>Subject</th>
+<th>Status</th>
+</tr>
 
-            <tr>
-            <td>Friday</td>
-            <td>3 Classes</td>
-            </tr>
 
-            <tr>
-            <td>Saturday</td>
-            <td>2 Classes</td>
-            </tr>
+<tr>
 
-            </table>
+<td>09:00 AM</td>
+<td>BCA-I</td>
+<td>Programming</td>
+<td>
+<span class="active">Running</span>
+</td>
 
-            </div>
+</tr>
 
-            <!-- Assigned Classes -->
 
-            <div class="card">
+<tr>
 
-            <h2>Assigned Classes</h2>
+<td>10:30 AM</td>
+<td>BCA-II</td>
+<td>DBMS</td>
+<td>
+<span class="pending">Upcoming</span>
+</td>
 
-            <ul>
+</tr>
 
-            <li>
-            <span>BCA 1st Year</span>
-            <span>Programming</span>
-            </li>
 
-            <li>
-            <span>BCA 2nd Year</span>
-            <span>DBMS</span>
-            </li>
 
-            <li>
-            <span>B.Tech CSE</span>
-            <span>Java</span>
-            </li>
+<tr>
 
-            <li>
-            <span>MCA</span>
-            <span>Python</span>
-            </li>
+<td>12:00 PM</td>
+<td>MCA</td>
+<td>Python</td>
+<td>
+<span class="pending">Upcoming</span>
+</td>
 
-            </ul>
+</tr>
 
-            </div>
 
-            </div>
+</table>
 
-            </div>
+</div>
 
-    </body>
+
+
+
+
+<!-- Attendance -->
+
+
+<div class="box">
+
+<div class="box-title">
+
+<h2>
+<i class="fa-solid fa-user-check"></i>
+Student Attendance
+</h2>
+
+</div>
+
+
+
+<div class="action-row">
+
+<div>
+<h3>Today's Attendance</h3>
+<p>110 / 120 Students Present</p>
+</div>
+
+
+<button>
+Mark Attendance
+</button>
+
+
+</div>
+
+
+
+<div class="action-row">
+
+<div>
+<h3>Attendance Report</h3>
+<p>Monthly student report</p>
+</div>
+
+
+<button>
+View Report
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<!-- Leave -->
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+<h2>
+<i class="fa-solid fa-file"></i>
+Leave Management
+</h2>
+
+</div>
+
+
+
+<div class="leave-item">
+
+<span>Apply New Leave</span>
+
+<button>
+Apply
+</button>
+
+</div>
+
+
+
+<div class="leave-item">
+
+<span>Leave History</span>
+
+<button>
+View
+</button>
+
+</div>
+
+
+
+<div class="leave-item">
+
+<span>Status</span>
+
+<strong class="yellow">
+Pending
+</strong>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- Subjects -->
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+<h2>
+<i class="fa-solid fa-graduation-cap"></i>
+Assigned Subjects
+</h2>
+
+</div>
+
+
+
+<ul class="subject-list">
+
+
+<li>
+Programming
+<span>BCA-I</span>
+</li>
+
+
+<li>
+Database Management
+<span>BCA-II</span>
+</li>
+
+
+<li>
+Java Programming
+<span>B.Tech</span>
+</li>
+
+
+<li>
+Python
+<span>MCA</span>
+</li>
+
+
+</ul>
+
+
+
+</div>
+
+
+
+
+
+<!-- Salary -->
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+<h2>
+<i class="fa-solid fa-wallet"></i>
+Salary Details
+</h2>
+
+</div>
+
+
+
+<div class="salary">
+
+
+<h3>
+₹55,000
+</h3>
+
+<p>
+Monthly Salary
+</p>
+
+
+<button>
+Download Slip
+</button>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- Notice -->
+
+
+<div class="box">
+
+
+<div class="box-title">
+
+<h2>
+<i class="fa-solid fa-bullhorn"></i>
+Latest Notices
+</h2>
+
+</div>
+
+
+
+<ul class="notice">
+
+
+<li>
+Semester Exam Schedule Released
+</li>
+
+
+<li>
+Faculty Meeting Tomorrow
+</li>
+
+
+<li>
+Holiday on Saturday
+</li>
+
+
+</ul>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</body>
+
 </html>

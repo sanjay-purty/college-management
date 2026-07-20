@@ -8,6 +8,7 @@ if(!isset($_SESSION['username']))
     header("Location: login.php");
     exit();
     }
+    
 
     $detail = "SELECT * FROM `students_details`";
 
@@ -40,61 +41,8 @@ if(!isset($_SESSION['username']))
 
     <div class="container">
 
-        <!-- Sidebar -->
-        <aside class="sidebar" id="sidebar">
-            <h1 class="logo">Brand</h1>
-
-            <ul>
-                    <li class="active">
-                        <a href="dashboard.php">
-                            <i class="fa-solid fa-table-columns"></i> 
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="student-de.php">
-                            <i class="fa-solid fa-user-graduate"></i> 
-                            <span>Students</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="teacher-dash.php">
-                            <i class="fa-solid fa-chalkboard-user"></i> 
-                            <span>Teachers</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="school.php">
-                            <i class="fa-solid fa-school"></i> 
-                            <span>Schools</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="income.php">
-                            <i class="fa-solid fa-money-bill"></i> 
-                            <span>Income</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="help.php">
-                            <i class="fa-solid fa-circle-question"></i> 
-                            <span>Help</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="logout.php">
-                            <i class="fa-solid fa-gear"></i> 
-                            <span>Logout</span>
-                        </a>
-                    </li>
-            </ul>
-        </aside>
+        
+        <?php include 'sidebar.php'; ?>
 
         <!-- Main Content -->
         <main class="main-content">
@@ -103,8 +51,13 @@ if(!isset($_SESSION['username']))
             <div class="topbar">
 
                 <div class="search-box">
-                    <input type="text" placeholder="Search...">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <form method="GET">
+                        <input type="text" name="search" placeholder="Search..."
+                        value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
+                        <button type="submit">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </form>
                 </div>
 <!-- 
                 <div class="top-right">
@@ -115,7 +68,9 @@ if(!isset($_SESSION['username']))
                  <div class="top-right">
                     <button class="add-btn"  onclick="window.location.href='add_teachers.php'">Add Teacher</button>
                     <i class="fa-regular fa-bell"></i>
-                    <img src="https://i.pravatar.cc/40" alt="">
+                    <a href="profile.php">
+                    <img src="https://i.pravatar.cc/40" alt=""></a>
+                    
                 </div>
 
             </div>
@@ -287,14 +242,15 @@ if(!isset($_SESSION['username']))
 
     </div>
 
-    <script>
-const menuToggle = document.getElementById("menuToggle");
-const sidebar = document.getElementById("sidebar");
+     <script>
+const menuToggle = document.getElementById('menuToggle');
+const sidebar = document.getElementById('sidebar');
 
-menuToggle.addEventListener("click", function () {
-    sidebar.classList.toggle("show");
+menuToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('show');
 });
 </script>
+</body>
 
 </body>
 
